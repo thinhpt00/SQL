@@ -49,5 +49,14 @@ Weather Observation Station 18
 select round((abs(min(lat_n) - max(lat_n)) + abs(min(long_w) - max(long_w))),4) from station;
 Weather Observation Station 19
 select round(sqrt(power((min(long_w) - max(long_w)),2) + power((min(lat_n) - max(lat_n)),2)),4) from station;
-Weather Observation Station 20
+🤔️Weather Observation Station 20
+	SET @row_index := -1;
+	SELECT ROUND(AVG(subq.unit_price), 4) as median FROM (
+	    SELECT @row_index:=@row_index + 1 AS row_index, unit_price
+	    FROM sales
+	    ORDER BY unit_price
+	) AS subq
+	WHERE subq.row_index IN (FLOOR(@row_index/2), CEIL(@row_index/2));
+
+
 
