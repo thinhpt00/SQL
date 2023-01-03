@@ -1,0 +1,25 @@
+Population Census
+	SELECT SUM(CITY.POPULATION) 
+	FROM CITY JOIN COUNTRY ON CITY.CountryCode = COUNTRY.Code
+	WHERE CONTINENT = 'ASIA';
+African Cities
+	SELECT CITY.NAME
+	FROM CITY JOIN COUNTRY ON CITY.CountryCode = COUNTRY.Code
+	WHERE CONTINENT = 'AFRICA';
+Average Population of Each Continent
+	SELECT COUNTRY.CONTINENT, FLOOR(AVG(CITY.POPULATION))
+	FROM CITY JOIN COUNTRY ON CITY.CountryCode = COUNTRY.Code
+	GROUP BY CONTINENT;	
+🤔️The Report
+	SELECT
+	    CASE
+		WHEN Grade < 8 THEN NULL 
+		ELSE Name
+	    END,
+	    Grade,
+	    Marks
+	FROM students
+	JOIN Grades 
+	    ON students.marks BETWEEN Grades.min_mark AND max_mark
+	ORDER BY Grade DESC, Name ASC, Marks ASC;
+	
